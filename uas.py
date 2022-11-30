@@ -45,7 +45,7 @@ with preporcessing:
     df.y.value_counts()
     df = df.drop(columns=["Unnamed: 0"])
 
-    X = df.drop(columns="y")
+    X = df.drop(columns="X90908.1-y")
     Y = df.y
     "### Membuang fitur yang tidak diperlukan"
     df
