@@ -51,12 +51,12 @@ with preporcessing:
     X
 
     le = preprocessing.LabelEncoder()
-    le.fit(y)
-    y = le.transform(y)
+    le.fit()
+    y = le.transform()
 
 
     le = LabelEncoder()
-    y = le.fit_transform(y)
+    y = le.fit_transform()
 
     scaler = MinMaxScaler()
     scaled = scaler.fit_transform(X)
@@ -65,7 +65,7 @@ with preporcessing:
     "### Transformasi Label"
     y
 
-    le.inverse_transform(y)
+    le.inverse_transform()
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     X.shape, y.shape
 
-    le.inverse_transform(y)
+    le.inverse_transform()
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
     
@@ -143,7 +143,6 @@ with modeling:
         if mod :
             st.write("Model Decision Tree accuracy score : {0:0.2f}" . format(scoredt))
     
-    import altair as alt
     eval = st.button("Evaluasi semua model")
     if eval :
         # st.snow()
@@ -153,7 +152,7 @@ with modeling:
         })
 
         bar_chart = alt.Chart(source).mark_bar().encode(
-            Y = 'Nilai Akurasi',
+            y = 'Nilai Akurasi',
             x = 'Nama Model'
         )
 
@@ -203,4 +202,3 @@ with implementation:
     if all :
         st.balloons()
         submit()
-
