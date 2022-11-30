@@ -51,8 +51,8 @@ with preporcessing:
     X
 
     le = preprocessing.LabelEncoder()
-    le.fit(Y)
-    y = le.transform(Y)
+    le.fit(y)
+    y = le.transform(y)
 
 
     le = LabelEncoder()
@@ -65,7 +65,7 @@ with preporcessing:
     "### Transformasi Label"
     y
 
-    le.inverse_transform(Y)
+    le.inverse_transform(y)
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     X.shape, y.shape
 
-    le.inverse_transform(Y)
+    le.inverse_transform(y)
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
     
