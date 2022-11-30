@@ -59,7 +59,7 @@ with preporcessing:
 
     le.inverse_transform(Y)
 
-    labels = pd.get_dummies(df.Y).columns.values.tolist()
+    labels = pd.get_dummies(df.y).columns.values.tolist()
 
     "### Label"
     labels
