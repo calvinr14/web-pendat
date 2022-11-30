@@ -45,7 +45,7 @@ with preporcessing:
     df.y.value_counts()
     df = df.drop(columns=["Unnamed: 0"])
 
-    X = df.drop(columns="X90908.1-y")
+    X = df.drop(columns="X53416,M83670,X90908,y")
     Y = df.y
     "### Membuang fitur yang tidak diperlukan"
     df
@@ -144,7 +144,7 @@ with modeling:
         })
 
         bar_chart = alt.Chart(source).mark_bar().encode(
-            y = 'Nilai Akurasi',
+            Y = 'Nilai Akurasi',
             x = 'Nama Model'
         )
 
