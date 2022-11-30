@@ -144,11 +144,11 @@ with modeling:
         })
 
         bar_chart = alt.Chart(source).mark_bar().encode(
-            Y = 'Nilai Akurasi',
+            y = 'Nilai Akurasi',
             x = 'Nama Model'
         )
 
-        st.altair_chart(bar_chart,use_container_width=True)
+        st.altair_chart(bar_chart,use_container_width=True) 
 
 with implementation:
     st.write("# Implementation")
