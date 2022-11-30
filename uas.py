@@ -43,7 +43,7 @@ with preporcessing:
     df[["X53416", "M83670", "X90908", "M97496"]].agg(['min','max'])
 
     df.y.value_counts()
-    df = df.drop(columns=["Unnamed:0"])
+    df = df.drop(columns=["Unnamed: 0"])
 
     X = df.drop(columns="y")
     Y = df.y
