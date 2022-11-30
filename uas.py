@@ -43,7 +43,7 @@ with preporcessing:
     df = df.drop(columns=["Unnamed: 0"])
 
     X = df.drop(columns="y")
-    y = df.brain
+    Y = df.brain
 
     "### Penghapusan Fitur"
     df
@@ -51,11 +51,11 @@ with preporcessing:
 
     le = preprocessing.LabelEncoder()
     le.fit(y)
-    y = le.transform(y)
+    Y = le.transform(y)
 
 
     le = LabelEncoder()
-    y = le.fit_transform(y)
+    Y = le.fit_transform(y)
 
     scaler = MinMaxScaler()
     scaled = scaler.fit_transform(X)
