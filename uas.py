@@ -46,18 +46,18 @@ with preporcessing:
     df = df.drop(columns=["Unnamed:0"])
 
     X = df.drop(columns="y")
-    y = df.tumor
+    Y = df.tumor
     "### Membuang fitur yang tidak diperlukan"
     df
 
     le = preprocessing.LabelEncoder()
-    le.fit(y)
-    y = le.transform(y)
+    le.fit(Y)
+    y = le.transform(Y)
 
     "### Transformasi Label"
     y
 
-    le.inverse_transform(y)
+    le.inverse_transform(Y)
 
     labels = pd.get_dummies(df.tumor).columns.values.tolist()
 
@@ -72,7 +72,7 @@ with preporcessing:
 
     X.shape, y.shape
 
-    le.inverse_transform(y)
+    le.inverse_transform(Y)
 
     labels = pd.get_dummies(df.weather).columns.values.tolist()
     
@@ -80,14 +80,14 @@ with preporcessing:
     labels
 
     scaler = MinMaxScaler()
-    scaler.fit(X)
+    scaler.fit(Y)
     X = scaler.transform(X)
     X
 
-    X.shape, y.shape
+    X.shape, Y.shape
 
 with modeling:
-    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=4)
+    X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.2,random_state=4)
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
     X_train = sc.fit_transform(X_train)
@@ -105,33 +105,33 @@ with modeling:
 
     # Fitting Naive Bayes Classification to the Training set with linear kernel
     nvklasifikasi = GaussianNB()
-    nvklasifikasi = nvklasifikasi.fit(X_train, y_train)
+    nvklasifikasi = nvklasifikasi.fit(X_train, Y_train)
 
     # Predicting the Test set results
-    y_pred = nvklasifikasi.predict(X_test)
+    Y_pred = nvklasifikasi.predict(X_test)
     
-    y_compare = np.vstack((y_test,y_pred)).T
+    Y_compare = np.vstack((Y_test,Y_pred)).T
     nvklasifikasi.predict_proba(X_test)
-    akurasi = round(100 * accuracy_score(y_test, y_pred))
+    akurasi = round(100 * accuracy_score(Y_test, Y_pred))
     # akurasi = 10
 
     # KNN 
     K=10
     knn=KNeighborsClassifier(n_neighbors=K)
-    knn.fit(X_train,y_train)
-    y_pred=knn.predict(X_test)
+    knn.fit(X_train,Y_train)
+    Y_pred=knn.predict(X_test)
 
-    skor_akurasi = round(100 * accuracy_score(y_test,y_pred))
+    skor_akurasi = round(100 * accuracy_score(Y_test,Y_pred))
 
     # DT
 
     dt = DecisionTreeClassifier()
-    dt.fit(X_train, y_train)
+    dt.fit(X_train, Y_train)
     # prediction
-    dt.score(X_test, y_test)
-    y_pred = dt.predict(X_test)
+    dt.score(X_test, Y_test)
+    Y_pred = dt.predict(X_test)
     #Accuracy
-    akurasiii = round(100 * accuracy_score(y_test,y_pred))
+    akurasiii = round(100 * accuracy_score(Y_test,Y_pred))
 
     if naive :
         if mod :
@@ -152,7 +152,7 @@ with modeling:
         })
 
         bar_chart = alt.Chart(source).mark_bar().encode(
-            y = 'Nilai Akurasi',
+            Y = 'Nilai Akurasi',
             x = 'Nama Model'
         )
 
@@ -182,3 +182,4 @@ with implementation:
     if all :
         st.balloons()
         submit()
+
