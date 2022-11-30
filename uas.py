@@ -37,10 +37,21 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    "### There's no need for categorical encoding"
-    X = df.iloc[:, 1:-1].values
-    y = df.iloc[:, -1].values
-    X,y
+    df[["Unnamed: 0", "X53416", "M83670", "X909081"]].agg(['min','max'])
+
+    df.brain.value_counts()
+    df = df.drop(columns=["Unnamed: 0"])
+
+    X = df.drop(columns="y")
+    y = df.brain
+
+    "### Penghapusan Fitur"
+    df
+    X
+
+    le = preprocessing.LabelEncoder()
+    le.fit(y)
+    y = le.transform(y)
 
 
     le = LabelEncoder()
@@ -50,32 +61,12 @@ with preporcessing:
     scaled = scaler.fit_transform(X)
     st.write("Hasil Preprocesing : ", scaled)
 
-    "### Memisahkan dataset menjadi data pelatihan dan data pengujian"
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state= 0)
-    st.write("Shape for training data", X_train.shape, y_train.shape)
-    st.write("Shape for testing data", X_test.shape, y_test.shape)
-
-    
-    "### Penskalaan Fitur"
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
-    X_train,X_test
-
-    "### Membuang fitur yang tidak diperlukan"
-    df
-    X
-
-    le = preprocessing.LabelEncoder()
-    le.fit(y)
-    Y = le.transform(y)
-
     "### Transformasi Label"
-    Y
+    y
 
-    le.inverse_transform(Y)
+    le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.y).columns.values.tolist()
+    labels = pd.get_dummies(df.brain).columns.values.tolist()
 
     "### Label"
     labels
@@ -83,18 +74,28 @@ with preporcessing:
     scaler = MinMaxScaler()
     scaler.fit(X)
     X = scaler.transform(X)
+
     "### Normalize data transformasi"
     X
 
-    X.shape, Y.shape
+    X.shape, y.shape
 
-    le.inverse_transform(Y)
+    le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.y).columns.values.tolist()
+    labels = pd.get_dummies(df.brain).columns.values.tolist()
     
+    "### Label"
+    labels
 
+    scaler = MinMaxScaler()
+    scaler.fit(X)
+    X = scaler.transform(X)
+    X
+
+    X.shape, y.shape
+    
 with modeling:
-    X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.2,random_state=4)
+    X_train,X_test,Y_train,Y_test = train_test_split(X,y,test_size=0.2,random_state=4)
     from sklearn.preprocessing import StandardScaler
     sc = StandardScaler()
     X_train = sc.fit_transform(X_train)
