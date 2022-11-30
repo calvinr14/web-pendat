@@ -50,18 +50,25 @@ with preporcessing:
     scaled = scaler.fit_transform(X)
     st.write("Hasil Preprocesing : ", scaled)
 
-    "### Splitting the dataset into training and testing data"
+    "### Memisahkan dataset menjadi data pelatihan dan data pengujian"
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state= 0)
     st.write("Shape for training data", X_train.shape, y_train.shape)
     st.write("Shape for testing data", X_test.shape, y_test.shape)
+
     
+    "### Penskalaan Fitur"
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+    X_train,X_test
+
     "### Membuang fitur yang tidak diperlukan"
     df
     X
 
     le = preprocessing.LabelEncoder()
-    le.fit(Y)
-    Y = le.transform(Y)
+    le.fit(y)
+    Y = le.transform(y)
 
     "### Transformasi Label"
     Y
