@@ -83,7 +83,7 @@ with modeling:
     st.write("""# Modeling """)
     st.subheader("Berikut ini adalah pilihan untuk Modeling")
     st.write("Pilih Model yang Anda inginkan untuk Cek Akurasi")
-    naive = st.checkbox('LogisticRegression')
+    lr = st.checkbox('LogisticRegression')
     kn = st.checkbox('K-Nearest Neighbor')
     des = st.checkbox('Decision Tree')
     mod = st.button("Modeling")
@@ -95,7 +95,6 @@ with modeling:
 
     # Predicting the Test set results
     y_predict = log_reg.predict(X_test)
-    y_predict
     
    ## Accuracy
     scoreLR = log_reg.score(X_test, Y_test)
@@ -106,7 +105,7 @@ with modeling:
 
     # Prediction
     y_predict = KNN.predict(X_test)
-    y_predict
+    
     # Accuracy Score
     scoreKNN = KNN.score(X_test, Y_test)
 
@@ -118,7 +117,6 @@ with modeling:
 
     #prediction
     y_predict = DTC.predict(X_test)
-    y_predict
 
     #Accuracy
     scoredt = DTC.score(X_test, Y_test)
