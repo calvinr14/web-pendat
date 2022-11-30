@@ -42,11 +42,11 @@ with preporcessing:
     st.write("""# Preprocessing""")
     df[["X53416", "M83670", "X90908", "M97496"]].agg(['min','max'])
 
-    df.tumor.value_counts()
+    df.y.value_counts()
     df = df.drop(columns=["Unnamed:0"])
 
     X = df.drop(columns="y")
-    Y = df.tumor
+    Y = df.y
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -59,7 +59,7 @@ with preporcessing:
 
     le.inverse_transform(Y)
 
-    labels = pd.get_dummies(df.tumor).columns.values.tolist()
+    labels = pd.get_dummies(df.y).columns.values.tolist()
 
     "### Label"
     labels
@@ -182,3 +182,4 @@ with implementation:
     if all :
         st.balloons()
         submit()
+
