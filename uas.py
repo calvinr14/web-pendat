@@ -43,7 +43,7 @@ with preporcessing:
     df = df.drop(columns=["Unnamed: 0"])
 
     X = df.drop(columns="y")
-    Y = df.brain
+    y = df.y
 
     "### Penghapusan Fitur"
     df
@@ -51,11 +51,11 @@ with preporcessing:
 
     le = preprocessing.LabelEncoder()
     le.fit(y)
-    Y = le.transform(y)
+    y = le.transform(y)
 
 
     le = LabelEncoder()
-    Y = le.fit_transform(y)
+    y = le.fit_transform(y)
 
     scaler = MinMaxScaler()
     scaled = scaler.fit_transform(X)
@@ -66,7 +66,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.brain).columns.values.tolist()
+    labels = pd.get_dummies(df.y).columns.values.tolist()
 
     "### Label"
     labels
@@ -82,7 +82,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.brain).columns.values.tolist()
+    labels = pd.get_dummies(df.y).columns.values.tolist()
     
     "### Label"
     labels
