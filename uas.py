@@ -123,7 +123,7 @@ with modeling:
 
     if lr :
         if mod :
-            st.write('Model Naive Bayes accuracy score: {0:0.2f}'. format(scoreLR))
+            st.write('Model Logistic Regression accuracy score: {0:0.2f}'. format(scoreLR))
     if kn :
         if mod:
             st.write("Model KNN accuracy score : {0:0.2f}" . format(scoreKNN))
@@ -148,23 +148,41 @@ with modeling:
 
 with implementation:
     st.write("# Implementation")
-    Precipitation = st.number_input('Masukkan preciptation (curah hujan) : ')
-    Temp_Max = st.number_input('Masukkan tempmax (suhu maks) : ')
-    Temp_Min = st.number_input('Masukkan tempmin (suhu min) : ')
-    Wind = st.number_input('Masukkan wind (angin) : ')
+    X53416 = st.number_input('Input X53416 : ')
+    M83670 = st.number_input('Input M83670 : ')
+    X909081 = st.number_input('Input X90908 : ')
+    M97496 = st.number_input('Input M97496 : ')
+    X90908 = st.number_input('Input X90908.1 : ')
+    U37019 = st.number_input('Input U37019 : ')
+    R48602 = st.number_input('Input R48602 : ')
+    T96548 = st.number_input('Input T96548 : ')
 
     def submit():
         # input
         inputs = np.array([[
-            Precipitation,
-            Temp_Max,
-            Temp_Min,
-            Wind
+            X53416,
+            M83670,
+            X909081,
+            M97496,
+            X90908,
+            U37019,
+            R48602,
+            T96548
             ]])
+
         le = joblib.load("le.save")
-        model1 = joblib.load("knn.joblib")
-        y_pred3 = model1.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka anda prediksi cuaca : {le.inverse_transform(y_pred3)[0]}")
+
+        if scoreLR > scoreKNN and scoredt:
+            model = joblib.load("lr.joblib")
+
+        elif scoreKNN > scoreLR and scoredt:
+            model = joblib.load("knn.joblib")
+
+        elif scoredt > scoreKNN and scoreLR:
+            model = joblib.load("dtc.joblib")
+
+        y_pred3 = model.predict(inputs)
+        st.write(f"Berdasarkan data yang di masukkan, maka anda prediksi score : {le.inverse_transform(y_pred3)[0]}")
 
     all = st.button("Submit")
     if all :
