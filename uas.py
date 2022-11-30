@@ -51,12 +51,12 @@ with preporcessing:
     X
 
     le = preprocessing.LabelEncoder()
-    le.fit()
-    y = le.transform()
+    le.fit(Y)
+    y = le.transform(Y)
 
 
     le = LabelEncoder()
-    y = le.fit_transform()
+    y = le.fit_transform(Y)
 
     scaler = MinMaxScaler()
     scaled = scaler.fit_transform(X)
@@ -65,7 +65,7 @@ with preporcessing:
     "### Transformasi Label"
     y
 
-    le.inverse_transform()
+    le.inverse_transform(Y)
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     X.shape, y.shape
 
-    le.inverse_transform()
+    le.inverse_transform(Y)
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
     
@@ -185,15 +185,15 @@ with implementation:
         le = joblib.load("le.save")
 
         if scoreLR > scoreKNN and scoredt:
-            model = joblib.load("lr.joblib")
+            log_reg = joblib.load("lr.joblib")
 
         elif scoreKNN > scoreLR and scoredt:
-            model = joblib.load("knn.joblib")
+            log_reg = joblib.load("knn.joblib")
 
         elif scoredt > scoreKNN and scoreLR:
-            model = joblib.load("dtc.joblib")
+            log_reg = joblib.load("dtc.joblib")
 
-        y_pred3 = model.predict(inputs)
+        y_pred3 = log_reg.predict(inputs)
         st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
         st.write("0 = Tidak menderita penyakit jantung")
         st.write("1 = menderita penyakit jantung")
