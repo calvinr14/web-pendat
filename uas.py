@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
@@ -36,12 +37,24 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
+    "### There's no need for categorical encoding"
+    X = df.iloc[:, 1:-1].values
+    y = df.iloc[:, -1].values
+    X,y
 
-    df.y.value_counts()
-    df = df.drop(columns=["Unnamed: 0"])
 
-    X = df.drop(columns="y")
-    Y = df.y
+    le = LabelEncoder()
+    y = le.fit_transform(y)
+
+    scaler = MinMaxScaler()
+    scaled = scaler.fit_transform(X)
+    st.write("Hasil Preprocesing : ", scaled)
+
+    "### Splitting the dataset into training and testing data"
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state= 0)
+    st.write("Shape for training data", X_train.shape, y_train.shape)
+    st.write("Shape for testing data", X_test.shape, y_test.shape)
+    
     "### Membuang fitur yang tidak diperlukan"
     df
     X
