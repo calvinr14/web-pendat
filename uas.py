@@ -49,6 +49,7 @@ with preporcessing:
     Y = df.y
     "### Membuang fitur yang tidak diperlukan"
     df
+    X
 
     le = preprocessing.LabelEncoder()
     le.fit(Y)
