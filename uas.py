@@ -121,7 +121,7 @@ with modeling:
     #Accuracy
     scoredt = DTC.score(X_test, Y_test)
 
-    if naive :
+    if lr :
         if mod :
             st.write('Model Naive Bayes accuracy score: {0:0.2f}'. format(scoreLR))
     if kn :
