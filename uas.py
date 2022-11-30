@@ -76,15 +76,6 @@ with preporcessing:
 
     labels = pd.get_dummies(df.y).columns.values.tolist()
     
-    "### Label"
-    labels
-
-    scaler = MinMaxScaler()
-    scaler.fit(Y)
-    Y = scaler.transform(Y)
-    Y
-
-    X.shape, Y.shape
 
 with modeling:
     X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.2,random_state=4)
