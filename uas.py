@@ -37,7 +37,7 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["Unnamed: 0", "X53416", "M83670", "X909081"]].agg(['min','max'])
+    df[["Unnamed: 0", "X53416", "M83670", "X90908"]].agg(['min','max'])
 
     df.brain.value_counts()
     df = df.drop(columns=["Unnamed: 0"])
