@@ -20,54 +20,16 @@ import altair as alt
 from sklearn.utils.validation import joblib
 
 st.title("PENAMBANGAN DATA")
-st.write("##### Nama  : Calvin ")
-st.write("##### Nim   : - ")
-st.write("##### Kelas : - ")
+st.write("##### Nama  : Calvin Rifansyah")
+st.write("##### Nim   : 200411100072 ")
+st.write("##### Kelas : PAW C ")
 data_set_description, upload_data, preporcessing, modeling, implementation = st.tabs(["Data Set Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
 with data_set_description:
     st.write("""# Data Set Description """)
-    st.write("###### Data Set Ini Adalah : Weather Prediction (Prediksi Cuaca) ")
+    st.write("###### Data Set Ini Adalah : Brain Tumor (Tumor Otak) ")
     st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/jillanisofttech/brain-tumor")
-    st.write("""###### Penjelasan setiap kolom : """)
-    st.write("""1. preciptation (curah hujan) :
-
-    Semua bentuk di mana air jatuh di permukaan tanah dan badan air terbuka seperti hujan, hujan es, salju, hujan es, atau gerimis
-    """)
-    st.write("""2. tempmax (suhu maks) :
-
-    Suhu Maksimum
-    """)
-    st.write("""3. tempmin (suhu min) :
-
-    Suhu Minimum
-    """)
-    st.write("""4. wind (angin) :
-
-    Kecepatan angin
-    """)
-    st.write("""5. weather (cuaca) :
-
-    Output (keluaran)
-    """)
-    st.write("""Menggunakan Kolom (input) :
-
-    precipitation
-    tempmax * tempmin
-    wind
-    """)
-    st.write("""Memprediksi kondisi cuaca (output) :
-
-    1. drizzle (gerimis)
-    2. rain (hujan)
-    3. sun (matahari)
-    4. snow (salju)
-    5. fog (kabut)
-    """)
-    st.write("###### Aplikasi ini untuk : Weather Prediction (Prediksi Cuaca) ")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/HambaliFitrianto/Aplikasi-Web-Data-Mining-Weather-Prediction ")
-    st.write("###### Untuk Wa saya anda bisa hubungi nomer ini : http://wa.me/6282138614807 ")
-
+    
 with upload_data:
     st.write("""# Upload File""")
     uploaded_files = st.file_uploader("Upload file CSV", accept_multiple_files=True)
@@ -220,4 +182,3 @@ with implementation:
     if all :
         st.balloons()
         submit()
-
