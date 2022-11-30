@@ -40,13 +40,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["precipitation", "temp_max", "temp_min", "wind"]].agg(['min','max'])
+    df[["X53416", "M83670", "X90908", "M97496"]].agg(['min','max'])
 
-    df.weather.value_counts()
-    df = df.drop(columns=["date"])
+    df.tumor.value_counts()
+    df = df.drop(columns=["Unnamed:0"])
 
-    X = df.drop(columns="weather")
-    y = df.weather
+    X = df.drop(columns="y")
+    y = df.tumor
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -59,7 +59,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.weather).columns.values.tolist()
+    labels = pd.get_dummies(df.tumor).columns.values.tolist()
 
     "### Label"
     labels
