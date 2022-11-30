@@ -182,4 +182,3 @@ with implementation:
     if all :
         st.balloons()
         submit()
-
