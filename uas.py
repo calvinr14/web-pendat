@@ -100,7 +100,7 @@ with modeling:
     des = st.checkbox('Decision Tree')
     mod = st.button("Modeling")
 
-
+    
     # Fit LogisticRegression
     log_reg = LogisticRegression()
     log_reg.fit(X_train,Y_train)
@@ -143,6 +143,7 @@ with modeling:
         if mod :
             st.write("Model Decision Tree accuracy score : {0:0.2f}" . format(scoredt))
     
+    import altair as alt
     eval = st.button("Evaluasi semua model")
     if eval :
         # st.snow()
@@ -185,16 +186,18 @@ with implementation:
         le = joblib.load("le.save")
 
         if scoreLR > scoreKNN and scoredt:
-            model1 = joblib.load("lr.joblib")
+            log_reg = joblib.load("lr.joblib")
 
         elif scoreKNN > scoreLR and scoredt:
-            model1 = joblib.load("knn.joblib")
+            log_reg = joblib.load("knn.joblib")
 
         elif scoredt > scoreKNN and scoreLR:
-            model1 = joblib.load("dtc.joblib")
+            log_reg = joblib.load("dtc.joblib")
 
-        y_pred3 = model1.predict(inputs)
+        y_pred3 = log_reg.predict(inputs)
         st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
+        st.write("0 = Tidak menderita penyakit jantung")
+        st.write("1 = menderita penyakit jantung")
 
     all = st.button("Submit")
     if all :
