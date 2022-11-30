@@ -81,8 +81,8 @@ with preporcessing:
 
     scaler = MinMaxScaler()
     scaler.fit(Y)
-    X = scaler.transform(X)
-    X
+    Y = scaler.transform(Y)
+    Y
 
     X.shape, Y.shape
 
