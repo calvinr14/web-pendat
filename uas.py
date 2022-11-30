@@ -22,7 +22,7 @@ from sklearn.utils.validation import joblib
 st.title("PENAMBANGAN DATA")
 st.write("##### Nama  : Calvin Rifansyah")
 st.write("##### Nim   : 200411100072 ")
-st.write("##### Kelas : PAW C ")
+st.write("##### Kelas : Penambangan Data C ")
 data_set_description, upload_data, preporcessing, modeling, implementation = st.tabs(["Data Set Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
 with data_set_description:
@@ -52,14 +52,14 @@ with preporcessing:
 
     le = preprocessing.LabelEncoder()
     le.fit(Y)
-    y = le.transform(Y)
+    Y = le.transform(Y)
 
     "### Transformasi Label"
-    y
+    Y
 
     le.inverse_transform(Y)
 
-    labels = pd.get_dummies(df.y).columns.values.tolist()
+    labels = pd.get_dummies(df.Y).columns.values.tolist()
 
     "### Label"
     labels
@@ -70,11 +70,11 @@ with preporcessing:
     "### Normalize data transformasi"
     X
 
-    X.shape, y.shape
+    X.shape, Y.shape
 
     le.inverse_transform(Y)
 
-    labels = pd.get_dummies(df.weather).columns.values.tolist()
+    labels = pd.get_dummies(df.y).columns.values.tolist()
     
     "### Label"
     labels
