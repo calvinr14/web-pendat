@@ -173,16 +173,16 @@ with implementation:
         le = joblib.load("le.save")
 
         if scoreLR > scoreKNN and scoredt:
-            model = joblib.load("lr.joblib")
+            model1 = joblib.load("lr.joblib")
 
         elif scoreKNN > scoreLR and scoredt:
-            model = joblib.load("knn.joblib")
+            model1 = joblib.load("knn.joblib")
 
         elif scoredt > scoreKNN and scoreLR:
-            model = joblib.load("dtc.joblib")
+            model1 = joblib.load("dtc.joblib")
 
-        y_pred3 = model.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka anda prediksi score : {le.inverse_transform(y_pred3)[0]}")
+        y_pred3 = model1.predict(inputs)
+        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
 
     all = st.button("Submit")
     if all :
