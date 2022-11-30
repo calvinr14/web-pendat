@@ -185,15 +185,15 @@ with implementation:
         le = joblib.load("le.save")
 
         if scoreLR > scoreKNN and scoredt:
-            log_reg = joblib.load("lr.joblib")
+            model = joblib.load("lr.joblib")
 
         elif scoreKNN > scoreLR and scoredt:
-            log_reg = joblib.load("knn.joblib")
+            model = joblib.load("knn.joblib")
 
         elif scoredt > scoreKNN and scoreLR:
-            log_reg = joblib.load("dtc.joblib")
+            model = joblib.load("dtc.joblib")
 
-        y_pred3 = log_reg.predict(inputs)
+        y_pred3 = model.predict(inputs)
         st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
         st.write("0 = Tidak menderita penyakit jantung")
         st.write("1 = menderita penyakit jantung")
