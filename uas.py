@@ -39,7 +39,7 @@ with preporcessing:
     st.write("""# Preprocessing""")
     df[["Unnamed: 0", "X53416", "M83670", "X90908"]].agg(['min','max'])
 
-    df.brain.value_counts()
+    df.y.value_counts()
     df = df.drop(columns=["Unnamed: 0"])
 
     X = df.drop(columns="y")
