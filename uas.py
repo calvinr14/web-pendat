@@ -102,24 +102,24 @@ with modeling:
 
     
     # Fit LogisticRegression
-    log_reg = LogisticRegression()
-    log_reg.fit(X_train,Y_train)
+    lr = LogisticRegression()
+    lr.fit(X_train,Y_train)
 
     # Predicting the Test set results
-    y_predict = log_reg.predict(X_test)
+    y_predict = lr.predict(X_test)
     
    ## Accuracy
-    scoreLR = log_reg.score(X_test, Y_test)
+    scoreLR = lr.score(X_test, Y_test)
 
     # KNN 
-    KNN = KNeighborsClassifier(n_neighbors=3, metric='minkowski', p=2)
-    KNN.fit(X_train,Y_train)
+    knn = KNeighborsClassifier(n_neighbors=3, metric='minkowski', p=2)
+    knn.fit(X_train,Y_train)
 
     # Prediction
-    y_predict = KNN.predict(X_test)
+    y_predict = knn.predict(X_test)
     
     # Accuracy Score
-    scoreKNN = KNN.score(X_test, Y_test)
+    scoreKNN = knn.score(X_test, Y_test)
 
     # RandomForestClassifier
 
@@ -193,8 +193,8 @@ with implementation:
         elif scoredt > scoreKNN and scoreLR:
             model = joblib.load("dtc.joblib")
 
-        y_pred3 = model.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
+        y_predict3 = model.predict(inputs)
+        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_predict3)[0]}")
         st.write("0 = Tidak menderita penyakit jantung")
         st.write("1 = menderita penyakit jantung")
 
