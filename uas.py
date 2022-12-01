@@ -102,36 +102,36 @@ with modeling:
 
     
     # Fit LogisticRegression
-    lr = LogisticRegression()
-    lr.fit(X_train,Y_train)
+    model = LogisticRegression()
+    model.fit(X_train,Y_train)
 
     # Predicting the Test set results
-    y_predict = lr.predict(X_test)
+    y_predict = model.predict(X_test)
     
    ## Accuracy
-    scoreLR = lr.score(X_test, Y_test)
+    scoreLR = model.score(X_test, Y_test)
 
     # KNN 
-    knn = KNeighborsClassifier(n_neighbors=3, metric='minkowski', p=2)
-    knn.fit(X_train,Y_train)
+    model = KNeighborsClassifier(n_neighbors=3, metric='minkowski', p=2)
+    model.fit(X_train,Y_train)
 
     # Prediction
-    y_predict = knn.predict(X_test)
+    y_predict = model.predict(X_test)
     
     # Accuracy Score
-    scoreKNN = knn.score(X_test, Y_test)
+    scoreKNN = model.score(X_test, Y_test)
 
     # RandomForestClassifier
 
     # Fit DecisionTree Classifier
-    DTC = DecisionTreeClassifier()
-    DTC.fit(X_train,Y_train)
+    model = DecisionTreeClassifier()
+    model.fit(X_train,Y_train)
 
     #prediction
-    y_predict = DTC.predict(X_test)
+    y_predict = model.predict(X_test)
 
     #Accuracy
-    scoredt = DTC.score(X_test, Y_test)
+    scoredt = model.score(X_test, Y_test)
 
     if lr :
         if mod :
