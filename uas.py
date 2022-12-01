@@ -56,7 +56,7 @@ with preporcessing:
 
 
     le = LabelEncoder()
-    y = le.fit_transform(Y)
+    y = le.fit_transform(y)
 
     scaler = MinMaxScaler()
     scaled = scaler.fit_transform(X)
