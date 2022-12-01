@@ -193,8 +193,8 @@ with implementation:
         elif scoredt > scoreKNN and scoreLR:
             model = joblib.load("dtc.joblib")
 
-        y_predict3 = model.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_predict3)[0]}")
+        y_predict = model.predict(inputs)
+        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_predict)[0]}")
         st.write("0 = Tidak menderita penyakit jantung")
         st.write("1 = menderita penyakit jantung")
 
