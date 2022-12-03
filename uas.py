@@ -106,7 +106,7 @@ with modeling:
     model.fit(X_train,Y_train)
 
     # Predicting the Test set results
-    y_predict = model.predict(X_test)
+    predicted = model.predict(X_test)
     
    ## Accuracy
     scoreLR = model.score(X_test, Y_test)
@@ -116,7 +116,7 @@ with modeling:
     model.fit(X_train,Y_train)
 
     # Prediction
-    y_predict = model.predict(X_test)
+    predicted = model.predict(X_test)
     
     # Accuracy Score
     scoreKNN = model.score(X_test, Y_test)
@@ -128,7 +128,7 @@ with modeling:
     model.fit(X_train,Y_train)
 
     #prediction
-    y_predict = model.predict(X_test)
+    predicted = model.predict(X_test)
 
     #Accuracy
     scoredt = model.score(X_test, Y_test)
@@ -193,8 +193,8 @@ with implementation:
         elif scoredt > scoreKNN and scoreLR:
             model = joblib.load("dtc.joblib")
 
-        y_predict = model.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_predict)[0]}")
+        y_pred3 = model.predict(inputs)
+        st.write(f"Berdasarkan data yang di masukkan, maka pasien termasuk : {le.inverse_transform(y_pred3)[0]}")
         st.write("0 = Tidak menderita penyakit jantung")
         st.write("1 = menderita penyakit jantung")
 
